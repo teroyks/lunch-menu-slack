@@ -35,3 +35,15 @@ All tests (including integration tests):
 Single test:
 
     pytest tests/unit/test_build_payload.py
+
+### Fixtures
+
+Create a fixture:
+
+    » PYTHONPATH=src python
+    >>> import pickle
+    >>> import requests
+    >>> from restaurants.mauno import URL
+    >>> res = requests.get(URL)
+    >>> with open('tests/unit/fixtures/mauno.response', 'wb') as f:
+    >>>     pickle.dump(res, f)

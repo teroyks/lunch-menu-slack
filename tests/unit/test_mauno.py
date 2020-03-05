@@ -1,8 +1,11 @@
 """Test Mauno functions with mock API"""
 
+import os
+import pickle
 import responses
 
 from helpers import MenuMsg as Msg
+from model.restaurant import Restaurant
 from restaurants import mauno
 
 
@@ -23,3 +26,20 @@ def test_invalid_content():
 
     res = mauno.fetch()
     assert res.menu == Msg.MENU_NOT_FOUND, 'Should not be able to parse the menu.'
+
+
+@responses.activate
+def test_parse_fixture():
+    """Fetch menu info from a cached real data"""
+    fixture_dir = os.path.dirname(os.path.realpath(__file__)) + '/fixtures'
+
+    with open(fixture_dir + '/mauno.response', 'rb') as fixture:
+        cached = pickle.load(fixture)
+        responses.add(responses.GET, mauno.URL,
+                      status=cached.status_code, body=cached.text)
+
+    restaurant = mauno.fetch()
+    assert isinstance(restaurant, Restaurant)
+    assert restaurant.name == 'Mauno Trivium', 'Should return a result.'
+    assert restaurant.url == mauno.URL
+    assert 'pannupihvit' in restaurant.menu, 'Should have parsed the menu content.'
