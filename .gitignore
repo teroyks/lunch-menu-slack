@@ -1,3 +1,5 @@
 *.code-workspace
 __pycache__
 .vscode
+.env.qa
+.env.prod
