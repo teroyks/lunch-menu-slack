@@ -72,7 +72,7 @@ def _fetch_menu(url) -> str:
     trivium_menu = [card.get_text() for card in cards if _is_trivium(card)]
     menu_str = '\n'.join(trivium_menu)
 
-    return _parse_menu(menu_str)
+    return _parse_menu(menu_str) if menu_str else Msg.MENU_NOT_FOUND
 
 
 def fetch() -> Restaurant:
