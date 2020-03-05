@@ -57,7 +57,7 @@ def build_query_payload(data: Restaurant) -> dict:
                 'type': 'section',
                 'text': {
                     'type': 'mrkdwn',
-                    'text': f':shallow_pan_of_food: *{restaurant_name}*'
+                    'text': f':knife_fork_plate: *{restaurant_name}*'
                 }
             },
             {
