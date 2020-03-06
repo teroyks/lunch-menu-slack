@@ -67,7 +67,7 @@ def _fetch_menu(url) -> str:
     if response.status_code != 200:
         return Msg.URL_NOT_FOUND
 
-    cards = _parse_menu_cards(response.text)
+    cards = _parse_menu_cards(response.content)
 
     trivium_menu = [card.get_text() for card in cards if _is_trivium(card)]
     menu_str = '\n'.join(trivium_menu)

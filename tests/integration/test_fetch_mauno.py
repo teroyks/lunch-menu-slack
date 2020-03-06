@@ -7,8 +7,7 @@ from restaurants import mauno
 def test_fetch():
     """Fetch restaurant info from Mauno"""
     result = mauno.fetch()
-    assert result.menu != MenuMsg.URL_NOT_FOUND
-    assert result.menu != MenuMsg.MENU_NOT_FOUND
+    assert 'TriviumCity' in result.menu, 'Should have found menu content.'
 
 
 def test_url_not_found():

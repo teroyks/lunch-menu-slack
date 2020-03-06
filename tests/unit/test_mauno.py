@@ -42,4 +42,7 @@ def test_parse_fixture():
     assert isinstance(restaurant, Restaurant)
     assert restaurant.name == 'Mauno Trivium', 'Should return a result.'
     assert restaurant.url == mauno.URL
-    assert 'pannupihvit' in restaurant.menu, 'Should have parsed the menu content.'
+
+    assert isinstance(restaurant.menu, str)
+    expected_string = 'TriviumCity – Lemminkäisenkatu 32, 20520 Turku'
+    assert expected_string in restaurant.menu
