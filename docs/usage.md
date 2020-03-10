@@ -35,6 +35,7 @@ All tests (including integration tests):
 Single test:
 
     pytest tests/unit/test_build_payload.py
+    pytest -k test_build_payload  # if test has a unique name
 
 ### Fixtures
 
