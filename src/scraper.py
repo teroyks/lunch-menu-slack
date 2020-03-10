@@ -26,9 +26,7 @@ def fetch_menus() -> Generator[Restaurant, None, None]:
     """
     with Pool(processes=10) as pool:
         results = pool.imap_unordered(_fetch_menu, restaurant_modules)
-        for i in results:
-            if i:
-                yield i
+        yield from (r for r in results if r)
 
 
 if __name__ == '__main__':
