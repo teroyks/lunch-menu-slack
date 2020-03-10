@@ -55,6 +55,9 @@ def fetch_from_lounaat(restaurant_name: str, day: date) -> str:
     except requests.exceptions.RequestException:
         return Msg.URL_NOT_FOUND
 
+    if response.status_code != 200:
+        return Msg.URL_NOT_FOUND
+
     soup = BeautifulSoup(response.content, 'html.parser')
     items = soup.findAll('div', {'class': 'item'})
 
