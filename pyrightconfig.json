@@ -4,7 +4,10 @@
   ],
   "executionEnvironments": [
     {
-      "root": "src"
+      "root": ".",
+      "extraPaths": [
+        "src"
+      ]
     },
     {
       "root": "tests",
