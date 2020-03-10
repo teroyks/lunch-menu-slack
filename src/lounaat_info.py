@@ -21,6 +21,7 @@ def _format_dishes(dishes: list) -> list:
         dishes
         | p(map, lambda x: x.get_text())
         | p(map, _remove_extra_whitespace)
+        | p(map, lambda x: x.rstrip())
         | p(list)
     )
 
