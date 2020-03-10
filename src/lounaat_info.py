@@ -12,11 +12,15 @@ from helpers import MenuMsg as Msg
 LOUNAAT_URL = 'https://www.lounaat.info/lounas'
 
 
+def _remove_extra_whitespace(s: str) -> str:
+    return re.sub(r'\s{2,}', r'  ', s)
+
+
 def _format_dishes(dishes: list) -> list:
     return (
         dishes
         | p(map, lambda x: x.get_text())
-        | p(map, lambda x: re.sub(r'\s{2,}', r'  ', x))
+        | p(map, _remove_extra_whitespace)
         | p(list)
     )
 
