@@ -9,7 +9,6 @@ from restaurants import __all__ as restaurant_modules
 
 
 def _fetch_menu(module_name: str) -> Optional[Restaurant]:
-    print('fetching restaurant:', module_name)
     try:
         mod = import_module(f'.{module_name}', 'restaurants')
         return mod.fetch()  # type: ignore
