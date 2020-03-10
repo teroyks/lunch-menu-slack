@@ -10,8 +10,7 @@ parser.add_argument('-p', '--print', dest='print_only', action='store_true',
                     help='print restaurant info, do not post to Slack')
 args = parser.parse_args()
 
+handle = post_menu if not args.print_only else print
+
 for menu in fetch_menus():
-    if args.print_only:
-        print(menu)
-    else:
-        post_menu(menu)
+    handle(menu)
