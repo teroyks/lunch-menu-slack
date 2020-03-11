@@ -3,3 +3,6 @@ __pycache__
 .vscode
 .qa.env
 .prod.env
+
+# requirements built automatically from Pipfile
+requirements.txt
