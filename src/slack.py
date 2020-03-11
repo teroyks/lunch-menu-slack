@@ -31,13 +31,6 @@ def dummy_post(*_, **__) -> Response:
 post_to_api = post_to_url(URL) if URL else dummy_post
 
 
-example = Restaurant(
-    name='Restaurant Name',
-    url='http://example.com',
-    menu='First item\nSecond item'
-)
-
-
 def build_query_payload(data: Restaurant) -> dict:
     """Builds Slack payload
 
