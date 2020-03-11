@@ -13,7 +13,7 @@ URL = os.environ.get('SLACK_URL')
 def post_to_url(url: str):
     """Creates a function that posts to API URL"""
     def post_params(*args, **kwargs) -> Response:
-        print('Posting', args, kwargs)
+        # print('Posting', args, kwargs)
         return requests.post(url, *args, **kwargs)
 
     return post_params
