@@ -33,6 +33,7 @@ def test_invalid_content():
     assert res == Msg.MENU_NOT_FOUND, 'Should not be able to parse the menu.'
 
 
+@responses.activate
 def test_parse_herkkupiste_data():
     """Parse real restaurant data."""
     fixture_dir = os.path.dirname(os.path.realpath(__file__)) + '/fixtures'
