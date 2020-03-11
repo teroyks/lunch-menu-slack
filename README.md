@@ -28,7 +28,7 @@ Run the app with `pipenv`:
 
     pipenv run python main.py
 
-By default this uses the `.env` file and does not post anything to Slack. You can define which environment to use at run time, e.g.:
+By default, this uses the `.env` file and does not post anything to Slack. You can define which environment to use at run time, e.g.:
 
     PIPENV_DOTENV_LOCATION=.qa.env pipenv run python main.py
 
@@ -36,9 +36,13 @@ By default this uses the `.env` file and does not post anything to Slack. You ca
 
 The build script packages the app into a Docker container if `docker` is available. Pass the environment settings file as an argument when running the app:
 
-    $ ./build.sh
-    $ docker run --rm --env-file=.qa.env lunch-slack
+    ./build.sh
+    docker run --rm --env-file=.qa.env lunch-slack
 
 ### Without Docker (with `virtualenv`)
 
 If you don’t have Docker available, you can still use the build script to generate a `requirements.txt` file, and use [virtualenv](https://docs.python-guide.org/dev/virtualenvs/ "Virtualenv documentation") to build the environment with all the required packages installed.
+
+## Modifying the Application
+
+See [Development and Testing](docs/development-and-testing.md)
