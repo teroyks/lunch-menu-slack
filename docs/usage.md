@@ -1,18 +1,10 @@
 # Usage
 
-## Installation
-
-    pipenv install
-
 ## Starting Virtual Environment
 
 Default environment
 
     pipenv shell
-
-Using QA environment
-
-    PIPENV_DOTENV_LOCATION=.env.qa pipenv shell
 
 ## Running Tests
 
