@@ -17,7 +17,18 @@ Each restaurant module needs to have a `fetch` function. This function takes no 
 
 ## Testing
 
-### Running Tests
+### Posting manually
+
+Steps for posting the menu for a single restaurant to the QA webhook:
+
+    PIPENV_DOTENV_LOCATION=.qa.env pipenv run python
+    >>> from restaurants import my_restaurant
+    >>> res = my_restaurant.fetch()
+    >>> from slack import post_menu
+    >>> post_menu(res)
+    <Response [200]>
+
+### Running Automated Tests
 
 All examples are run in the development shell.
 
