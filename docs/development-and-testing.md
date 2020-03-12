@@ -4,10 +4,12 @@
 
 You can start a shell in the development environment; this way you don't need to use `pipenv` for every command you use.
 
-    pipenv shell
-    python main.py
-    python src/slack.py
-    # etc.
+```shell
+pipenv shell
+python main.py
+python src/slack.py
+# etc.
+```
 
 ## Adding New Restaurants
 
@@ -21,12 +23,14 @@ Each restaurant module needs to have a `fetch` function. This function takes no 
 
 Steps for posting the menu for a single restaurant to the QA webhook:
 
-    PIPENV_DOTENV_LOCATION=.qa.env pipenv run python
-    >>> from restaurants import my_restaurant
-    >>> res = my_restaurant.fetch()
-    >>> from slack import post_menu
-    >>> post_menu(res)
-    <Response [200]>
+```python
+PIPENV_DOTENV_LOCATION=.qa.env pipenv run python
+>>> from restaurants import my_restaurant
+>>> res = my_restaurant.fetch()
+>>> from slack import post_menu
+>>> post_menu(res)
+<Response [200]>
+```
 
 ### Running Automated Tests
 
@@ -34,17 +38,23 @@ All examples are run in the development shell.
 
 Run unit tests:
 
-    pytest tests/unit
+```shell
+pytest tests/unit
+```
 
 Run integration tests (fetch the real menu content; in the default env do not post anything to Slack):
 
-    pytest tests/integration
+```shell
+pytest tests/integration
+```
 
 Running `pytest` with no arguments runs all the tests. If you add new tests, put them under the unit or integration directory, depending on test type.
 
 You can run a single test with `-k`, for example:
 
+```shell
     pytest -k test_build_payload
+```
 
 ### Test Fixtures
 
@@ -52,11 +62,13 @@ Unit tests for parsing restaurant data use a fixture: real web page content save
 
 Creating a fixture in the dev shell:
 
-    $ python
-    >>> import pickle
-    >>> import requests
-    >>> res = requests.get('https://restaurant.example.com/lunch')
-    >>> with open('tests/unit/fixtures/example-restaurant.response', 'wb') as f:
-    >>>     pickle.dump(res, f)
+```python
+python
+>>> import pickle
+>>> import requests
+>>> res = requests.get('https://restaurant.example.com/lunch')
+>>> with open('tests/unit/fixtures/example-restaurant.response', 'wb') as f:
+>>>     pickle.dump(res, f)
+```
 
 See [`test_lounaat_info`](../tests/unit/test_lounaat_info.py) for an example.
