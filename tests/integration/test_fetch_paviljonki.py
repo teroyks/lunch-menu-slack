@@ -1,10 +1,15 @@
 """Test fetching the Mauno menu"""
 
 from helpers import MenuMsg
-from restaurants import paviljonki
+from restaurants import rantakerttu
 
 
 def test_fetch():
     """Fetch restaurant info from Mauno"""
-    result = paviljonki.fetch()
-    assert 'Noutopöydästä' in result.menu, 'Should have found menu content.'
+    result = rantakerttu.fetch()
+    assert 'Rantakerttu' in result.name
+
+    menu = result.menu.strip()
+    assert menu, 'Should return some menu content.'
+    assert not menu == MenuMsg.URL_NOT_FOUND, 'Should have been able to fetch the menu.'
+    assert not menu == MenuMsg.MENU_NOT_FOUND, 'Should have parsed the menu content.'
